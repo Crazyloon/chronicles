@@ -1,0 +1,58 @@
+@import './variables.scss';
+// Bootstrap and its default variables
+@import "node_modules/bootstrap/scss/bootstrap";
+
+body {
+  margin: 0;
+}
+
+.color-p {
+  color: $c-primary !important;
+}
+.color-s {
+  color: $c-secondary !important;
+}
+.color-t {
+  color: $c-ternary !important;
+}
+.color-q {
+  color: $c-quaternary !important;
+}
+.color-a {
+  color: $c-alternate !important;
+}
+.color-g {
+  color: $c-gray !important;
+}
+.color-b {
+  color: $c-black !important;
+}
+.color-w {
+  color: $c-white !important;
+}
+
+.bg-p {
+  background-color: $c-primary !important;
+}
+.bg-s {
+  background-color: $c-secondary !important;
+}
+.bg-t {
+  background-color: $c-ternary !important;
+}
+.bg-q {
+  background-color: $c-quaternary !important;
+}
+.bg-a {
+  background-color: $c-alternate !important;
+}
+.bg-g {
+  background-color: $c-gray !important;
+}
+.bg-b {
+  background-color: $c-black !important;
+}
+.bg-w {
+  background-color: $c-white !important;
+}
+

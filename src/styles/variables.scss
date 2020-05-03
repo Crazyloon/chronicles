@@ -1,0 +1,45 @@
+// Your variable overrides
+// $primary:       #CF06CF;
+$primary:       #83D7D0;
+$ternary: #D03394;
+// $secondary:     $gray-600 !default;
+// $success:       $green !default;
+$info:          #0091B4;
+// $warning:       $yellow !default;
+// $danger:        $red !default;
+// $light:         $gray-100 !default;
+// $dark:          $gray-800 !default;
+
+// original pallet
+// $c-primary: #83D7D0;
+// $c-secondary: #819985;
+// $c-ternary: #D03994;
+// $c-quaternary: #1FB9A2;
+// $c-alternate: #ECCFD8;
+
+$c-primary: #2f4454;
+$c-secondary: #2e151b;
+$c-ternary: #da7b93;
+$c-quaternary: #376e6f;
+$c-alternate: #1c3334;
+$c-gray: #4B4453;
+$c-black: #000000;
+$c-white: #ffffff;
+
+// $t-blue: #2f4454;
+// $t-brown: #2e151b;
+// $t-pink: #da7b93;
+// $t-green: #376e6f;
+// $t-dGreen: #1c3334;
+
+$body-bg: #000;
+$body-color: #111;
+
+$primary-gradiant-lb: linear-gradient(to left bottom, #83d7d0, #49c8e0, #27b5f0, #5e9bf2, #9c78dc, #9775dc, #9273db, #8d70db, #008fef, #00a3e4, #00b1c6, #1fb9a2);
+$primary-gradiant-rb: linear-gradient(to right bottom, #83d7d0, #49c8e0, #27b5f0, #5e9bf2, #9c78dc, #9775dc, #9273db, #8d70db, #008fef, #00a3e4, #00b1c6, #1fb9a2);
+$primary-gradiant-rl: linear-gradient(to right, #83d7d0, #49c8e0, #27b5f0, #5e9bf2, #9c78dc, #9775dc, #9273db, #8d70db, #008fef, #00a3e4, #00b1c6, #1fb9a2);
+$primary-gradiant-lr: linear-gradient(to left, #83d7d0, #49c8e0, #27b5f0, #5e9bf2, #9c78dc, #9775dc, #9273db, #8d70db, #008fef, #00a3e4, #00b1c6, #1fb9a2);
+$secondary-gradiant-lb: linear-gradient(to left bottom, #83D7D0, #82E2C7, #90ECB6, #ABF39F, #CFF787, #F9F871);
+$secondary-gradiant-rb: linear-gradient(to right bottom, #83D7D0, #82E2C7, #90ECB6, #ABF39F, #CFF787, #F9F871);
+$secondary-gradiant-lr: linear-gradient(to right, #83D7D0, #82E2C7, #90ECB6, #ABF39F, #CFF787, #F9F871);
+$secondary-gradiant-rl: linear-gradient(to left, #83D7D0, #82E2C7, #90ECB6, #ABF39F, #CFF787, #F9F871);
