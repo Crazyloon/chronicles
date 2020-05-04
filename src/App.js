@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { Router } from 'react-router';
+import React from 'react';
+import { Router, Switch } from 'react-router';
 import { createBrowserHistory } from "history";
 
 import logo from './logo.svg';
+import './App.scss';
+
 
 import Navigation from './components/navigation/navigation';
-import Hero from './components/hero/hero';
-
-import './App.scss';
+import HomePage from './pages/home';
 
 const history = createBrowserHistory();
 
@@ -17,7 +17,9 @@ function App() {
     <div className="App">
       <Router history={history}>
         <Navigation />
-        <Hero />
+        <Switch>
+          <HomePage />
+        </Switch>
       </Router>
     </div>
   );

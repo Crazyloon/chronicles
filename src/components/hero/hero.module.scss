@@ -1,0 +1,35 @@
+.hero {
+  width: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+  background-image: url('../../images/hero2.jpg');
+  background-size: cover;
+  background-position: center 20%;
+  height: 500px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+
+  h1 {
+    font-size: 56px;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px black;
+    margin: 90px auto 50px auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+    text-decoration: underline;
+  }
+
+  h4 {
+    font-size: 32px;
+    text-shadow: 1px 1px 3px black;
+    margin: 0px auto 50px auto;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
