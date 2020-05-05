@@ -14,10 +14,6 @@ body{
   color: white;
 }
 
-.App {
-  text-align: center;
-}
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -61,6 +57,13 @@ body{
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+.hover-shrink{
+  transition-duration: 0.2s;
+  &:hover {
+    transform: scale(0.95);
   }
 }
 

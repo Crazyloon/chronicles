@@ -1,14 +1,14 @@
 import React from 'react';
 import Card from "../card/card";
-import styles from './card-deck.module.scss'
+// import styles from './card-deck.module.scss'
 
 const CardDeck = ({cards}) => {
   return ( 
-    <section className='col-md-12'>
-      <div className='card-deck mt-3'>
+    <section className='col-12 mt-4'>
+      <div className='card-deck'>
       {
-        cards.map(card => {
-          return <Card body={card.body} heading={card.heading}
+        cards.map((card, i) => {
+          return <Card key={i} body={card.body} heading={card.heading}
                 imgSrc={card.src} link={card.url}
           />
         })

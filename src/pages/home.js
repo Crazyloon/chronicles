@@ -34,7 +34,9 @@ const HomePage = () => {
   return ( 
     <div>
       <Hero />
-      <CardDeck cards={cards} />
+      <div className='container-lg'>
+        <CardDeck cards={cards} />
+      </div>
     </div>
    );
 }

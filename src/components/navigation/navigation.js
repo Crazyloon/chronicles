@@ -1,62 +1,82 @@
-// import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import React from "react";
+import React, { useState } from "react";
+import { useWindowSize } from "../../hooks/useWindowSize";
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLock } from "@fortawesome/free-solid-svg-icons";
-// import * as mutations from '../../store/mutations';
-import { Nav, Navbar, NavDropdown } from "react-bootstrap";
-import logo from '../../logo.svg';
-import {appTitle as title} from '../../constants/constants';
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+// // import * as mutations from '../../store/mutations';
+// import { Nav, Navbar, NavDropdown } from "react-bootstrap";
+import logo from "../../logo.svg";
+import { appTitle as title, breakpoints } from "../../constants/constants";
+import classNames from "classnames";
 
-export default function Navigation() {
+export default function Navigation({ pages }) {
+  let width = useWindowSize().width;
+  let [menuState, setMenuState] = useState(false);
+  let menuClasses = classNames("menu", menuState === true ? "open" : "closed");
+
   return (
-    <header className='navigation'>
-      <nav className=''>
-        <div className='nav-left'>
-          <a href='/'>
-            <div className='logo-container'>
-              <img className='logo' src={logo} />
-              {title}
+    <>
+      <header className="navigation">
+        <nav>
+          <div className="nav-left">
+            <div className="logo-container">
+              <NavLink exact to="/">
+                <img className="logo" src={logo} alt="website logo" />
+                {title}
+              </NavLink>
             </div>
-          </a>
-        </div>
-        <div className='nav-right'>
-          <ul className='nav-links'>
-            <li>
-              <a className='' href='/'>
-                Home
-              </a>
-            </li>
-            <li>
-              <a  className='' href='../howtocare.html'>
-                How to Care
-              </a>
-            </li>
-            <li className='active'>
-              <a  className='' href='/examples/layout-example.html'>
-                Layout Examples
-              </a>
-            </li>
-            <li>
-              <a  className='' href='#'>
-                Last Link
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </header>
-  )
-};
+          </div>
+          {width > breakpoints.lg ? (
+            <div className="nav-center">
+              <ul className="nav-links">
+                {pages.map((page, i) => {
+                  return (
+                    <li key={i}>
+                      <NavLink
+                        exact
+                        to={page.location}
+                        activeClassName="active"
+                      >
+                        {page.name}
+                      </NavLink>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ) : null}
+          <div className="nav-right">
+            {width <= breakpoints.lg ? (
+              <>
+                <FontAwesomeIcon
+                  onClick={() => setMenuState(!menuState)}
+                  className="menu-icon"
+                  icon={faBars}
+                  size="2x"
+                />
 
-// const mapStateToProps = ({session}) => ({
-//   isAuthenticated: session.isAuthenticated === mutations.AUTHENTICATED
-// });
-// const mapDispatchToProps = dispatch => ({
-//   logOut(e){
-//     e.preventDefault();
-//     dispatch(mutations.requestDeauthenticateUser());
-//   }
-// });
-
-// export const ConnectedNavigation = connect(mapStateToProps, mapDispatchToProps)(Navigation);
+                <div className={menuClasses}>
+                  <ul className="nav-links">
+                    {pages.map((page, i) => {
+                      return (
+                        <li key={i} onClick={() => setMenuState(false)}>
+                          <NavLink
+                            exact
+                            to={page.location}
+                            activeClassName="active"
+                          >
+                            {page.name}
+                          </NavLink>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              </>
+            ) : null}
+          </div>
+        </nav>
+      </header>
+    </>
+  );
+}

@@ -1,23 +1,9 @@
 
 header.navigation {
-  border-bottom: 3px solid;
-  border-image-slice: 1;
-  border-image-source: $secondary-gradiant-rl;
-  width: 100%;
   min-height: 60px;
   background: $c-primary;
   display: flex;
 }
-
-// .navigation header .logo{
-//   height: 40px;
-//   margin-right: 15px;
-// }
-
-// .navigation header .logo-container {
-//   display: flex;
-//   align-items: center;
-// }
 
 .navigation {
   .logo-container {
@@ -31,7 +17,6 @@ header.navigation {
   }
 
   nav{
-    margin-left: 20px;
     margin-top: auto;
     margin-bottom: auto;
     width: 100%;
@@ -41,6 +26,31 @@ header.navigation {
   .nav-left {
     margin: auto;
     white-space: nowrap;
+    flex-grow: 1;
+    width: 240px;
+  }
+  
+  .nav-center {
+    margin: auto;
+    flex-grow: 2;
+  }
+  
+  .nav-right {
+    flex-grow: 1;
+    width: 240px;
+    display: flex;
+    justify-content: flex-end;
+    margin: auto;
+    padding-right: 20px;
+    .menu-icon {
+      &:hover {
+        cursor: pointer;
+      }
+      &:active {
+        transform: scaleY(0.9)
+      }
+    }
+    // font-size: 28px;
   }
   
   .nav-left a {
@@ -54,32 +64,31 @@ header.navigation {
     color: $c-white;
   }
 
-  .nav-right {
-    margin: auto;
-    width: 100%;
-  }
 
   nav ul {
     width: 100%;
     margin: 0;
     padding: 0;
-    text-align: center;
     list-style: none;
+    display: flex;
+    justify-content: space-evenly;
   }
   
   nav ul li {
     border-radius: 0;
     border: none;
     margin: 0 10px;
+    text-align: center;
     position: relative;
     background-color: $c-white;
-    padding: 10px 5px 10px 5px;
     display: inline-block;
     width: 130px;
     cursor: pointer;
     transition: 0.5s ease-in-out;
     
     > a {
+      display: block;
+      padding: 10px 5px 10px 5px;
       text-decoration: none;
       color: $c-gray;
     }
@@ -93,7 +102,7 @@ header.navigation {
       }
     }
 
-    &:after {
+    & a:after {
       content: "";
       position: absolute;
       display: block;
@@ -108,23 +117,54 @@ header.navigation {
       transition: transform 0.4s ease-in-out;
     }
     
-    &:hover:after{
+    & a:hover:after{
       transform: scaleX(1);
     }
 
-    &.active:after{
+    & a.active:after{
       transform: scaleX(1);
     }
 
-    &.active {
+    & a.active {
       background-color: $c-quaternary;
-      > a {
-        color: $c-white;
-      }
+      color: $c-white;
     }
     
     &:active {
       background-color: scale-color($color: $c-quaternary, $lightness: -10%);
+    }
+  }
+
+  .menu {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    top: 60px;
+    transition-duration: 0.4s;
+    overflow-x: hidden;
+    background-color: $c-primary;
+
+    .nav-links{
+      display: flex;
+      flex-direction: column;
+    }
+    
+    &.closed li {
+      width: 0px;
+      margin: 3px 0 3px 0;
+        &:nth-of-type(even){
+          margin-bottom: 0;
+          margin-top: 0;
+        }
+    }
+    
+    &.open li {
+      margin: 3px;
+      &:nth-of-type(even){
+        margin-bottom: 0;
+        margin-top: 0;
+      }
+      width: 130px;
     }
   }
 }
