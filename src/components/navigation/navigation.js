@@ -3,8 +3,6 @@ import { useWindowSize } from "../../hooks/useWindowSize";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-// // import * as mutations from '../../store/mutations';
-// import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import logo from "../../logo.svg";
 import { appTitle as title, breakpoints } from "../../constants/constants";
 import classNames from "classnames";
