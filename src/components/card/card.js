@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from "./card.module.scss";
 import classNames from 'classnames';
+import { HorizontalBorder } from '../border/border';
 
 
 /**
@@ -24,6 +25,7 @@ const Card = ({imgSrc, heading, body, link}) => {
     <>
       <a href={link} className={cardClasses}>
           <img src={imgSrc} className="card-img-top" alt="..." />
+          <HorizontalBorder primaryColor={true} gradientDirection={'rl'}/>
           <div className="card-body">
             <h5 className="card-title">{heading}</h5>
             <p className="card-text">{body}</p>

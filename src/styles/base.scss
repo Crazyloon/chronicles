@@ -24,6 +24,18 @@ body {
 .color-g {
   color: $c-gray !important;
 }
+.color-lblue {
+  color: $c-lblue !important;
+}
+.color-blue {
+  color: $c-blue !important;
+}
+.color-lpurple {
+  color: $c-lpurple !important;
+}
+.color-purple {
+  color: $c-purple !important;
+}
 .color-b {
   color: $c-black !important;
 }
@@ -49,6 +61,18 @@ body {
 .bg-g {
   background-color: $c-gray !important;
 }
+.bg-lblue {
+  background-color: $c-lblue !important;
+}
+.bg-blue {
+  background-color: $c-blue !important;
+}
+.bg-lpurple {
+  background-color: $c-lpurple !important;
+}
+.bg-purp {
+  background-color: $c-purple !important;
+}
 .bg-b {
   background-color: $c-black !important;
 }
@@ -56,3 +80,38 @@ body {
   background-color: $c-white !important;
 }
 
+
+// @include button-variant($background, $border, $hover-background: darken($background, 7.5%), $hover-border: darken($border, 10%), $active-background: darken($background, 10%), $active-border: darken($border, 12.5%))
+// @include button-outline-variant($color, $color-hover: color-yiq($color), $active-background: $color, $active-border: $color)
+// Button sizes
+// @include button-size($padding-y, $padding-x, $font-size, $line-height, $border-radius)
+.btn-prime {
+  @include button-variant($c-primary, white, scale-color($color: $c-primary, $lightness: -10%));
+  color: $c-white;
+}
+.btn-ternary {
+  @include button-variant($c-ternary, white, scale-color($color: $c-ternary, $lightness: -10%));
+  color: $c-white;
+}
+.btn-quaternary {
+  @include button-variant($c-quaternary, white, scale-color($color: $c-quaternary, $lightness: -10%));
+}
+
+.btn-alternate {
+  @include button-variant($c-alternate, white, scale-color($color: $c-alternate, $lightness: -10%));
+}
+
+.btn-lblue {
+  @include button-variant($c-lblue, white, scale-color($color: $c-lblue, $lightness: -10%));
+}
+
+.btn-blue {
+  @include button-variant($c-blue, white, scale-color($color: $c-blue, $lightness: -10%));
+}
+
+.btn-lpurple {
+  @include button-variant($c-lpurple, white, scale-color($color: $c-lpurple, $lightness: -10%));
+}
+.btn-purple {
+  @include button-variant($c-purple, white, scale-color($color: $c-purple, $lightness: -10%));
+}

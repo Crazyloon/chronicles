@@ -10,6 +10,7 @@ import HomePage from './pages/home';
 import NotFoundPage from './pages/notfoundpage';
 import Footer from './components/footer/footer';
 import { HorizontalBorder } from './components/border/border';
+import Cooking from './pages/cooking';
 
 const history = createBrowserHistory();
 
@@ -34,16 +35,16 @@ function App() {
     <>
       <Router history={history}>
         <Navigation pages={navigationPages} />
-        <HorizontalBorder />
+        <HorizontalBorder primaryColor={true} gradientDirection={'rl'}/>
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/cooking" component={HomePage} />
+          <Route exact path="/cooking" component={Cooking} />
           <Route exact path="/travel" component={HomePage} />
           <Route exact path="/fitness" component={HomePage} />
           <Route exact component={NotFoundPage} />
         </Switch>
       </Router>
-      <HorizontalBorder classList={['mt-4']} />
+      <HorizontalBorder classList={['mt-4']}  primaryColor={false} gradientDirection={'lr'}/>
       <Footer />
     </>
   );

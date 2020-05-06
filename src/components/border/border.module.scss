@@ -3,11 +3,35 @@
 .horizontalBorder{
   width: 100%;
   height: 3px;
-  background-image: $secondary-gradiant-lr;
 }
 
 .verticalBorder{
   width: 3px;
   height: 100%;
+}
+
+.plr {
+  background-image: $primary-gradiant-lr;
+}
+.plb {
+  background-image: $primary-gradiant-lb;
+}
+.prb {
+  background-image: $primary-gradiant-rb;
+}
+.prl {
+  background-image: $primary-gradiant-rl;
+}
+
+.slr {
+  background-image: $secondary-gradiant-lr;
+}
+.slb {
+  background-image: $secondary-gradiant-lb;
+}
+.srb {
   background-image: $secondary-gradiant-rb;
+}
+.srl {
+  background-image: $secondary-gradiant-rl;
 }
