@@ -6,6 +6,7 @@ body {
   margin: 0;
 }
 
+// Primary site-theme colors
 .color-p {
   color: $c-primary !important;
 }
@@ -21,8 +22,36 @@ body {
 .color-a {
   color: $c-alternate !important;
 }
-.color-g {
-  color: $c-gray !important;
+// Additional colors pastel and bright
+.color-lgreen {
+  color: $c-lgreen !important;
+}
+.color-green {
+  color: $c-green !important;
+}
+.color-lred {
+  color: $c-lred !important;
+}
+.color-red {
+  color: $c-red !important;
+}
+.color-lyellow {
+  color: $c-lyellow !important;
+}
+.color-yellow {
+  color: $c-yellow !important;
+}
+.color-lorange {
+  color: $c-lorange !important;
+}
+.color-orange {
+  color: $c-orange !important;
+}
+.color-lteal {
+  color: $c-lteal !important;
+}
+.color-teal {
+  color: $c-teal !important;
 }
 .color-lblue {
   color: $c-lblue !important;
@@ -36,13 +65,16 @@ body {
 .color-purple {
   color: $c-purple !important;
 }
+.color-g {
+  color: $c-gray !important;
+}
 .color-b {
   color: $c-black !important;
 }
 .color-w {
   color: $c-white !important;
 }
-
+// All the same colors for backgrounds
 .bg-p {
   background-color: $c-primary !important;
 }
@@ -58,8 +90,35 @@ body {
 .bg-a {
   background-color: $c-alternate !important;
 }
-.bg-g {
-  background-color: $c-gray !important;
+.bg-lgreen {
+  background-color: $c-lgreen !important;
+}
+.bg-green {
+  background-color: $c-green !important;
+}
+.bg-lred {
+  background-color: $c-lred !important;
+}
+.bg-red {
+  background-color: $c-red !important;
+}
+.bg-lyellow {
+  background-color: $c-lyellow !important;
+}
+.bg-yellow {
+  background-color: $c-yellow !important;
+}
+.bg-lorange {
+  background-color: $c-lorange !important;
+}
+.bg-orange {
+  background-color: $c-orange !important;
+}
+.bg-lteal {
+  background-color: $c-lteal !important;
+}
+.bg-teal {
+  background-color: $c-teal !important;
 }
 .bg-lblue {
   background-color: $c-lblue !important;
@@ -70,8 +129,11 @@ body {
 .bg-lpurple {
   background-color: $c-lpurple !important;
 }
-.bg-purp {
+.bg-purple {
   background-color: $c-purple !important;
+}
+.bg-g {
+  background-color: $c-gray !important;
 }
 .bg-b {
   background-color: $c-black !important;
@@ -101,14 +163,42 @@ body {
   @include button-variant($c-alternate, white, scale-color($color: $c-alternate, $lightness: -10%));
 }
 
+.btn-lgreen {
+  @include button-variant($c-lgreen, white, scale-color($color: $c-lgreen, $lightness: -10%));
+}
+.btn-green {
+  @include button-variant($c-green, white, scale-color($color: $c-green, $lightness: -10%));
+}
+.btn-lred {
+  @include button-variant($c-lred, white, scale-color($color: $c-lred, $lightness: -10%));
+}
+.btn-red {
+  @include button-variant($c-red, white, scale-color($color: $c-red, $lightness: -10%));
+}
+.btn-lyellow {
+  @include button-variant($c-lyellow, white, scale-color($color: $c-lyellow, $lightness: -10%));
+}
+.btn-yellow {
+  @include button-variant($c-yellow, white, scale-color($color: $c-teal, $lightness: -10%));
+}
+.btn-lorange {
+  @include button-variant($c-lorange, white, scale-color($color: $c-lorange, $lightness: -10%));
+}
+.btn-orange {
+  @include button-variant($c-orange, white, scale-color($color: $c-orange, $lightness: -10%));
+}
+.btn-lteal {
+  @include button-variant($c-lteal, white, scale-color($color: $c-lteal, $lightness: -10%));
+}
+.btn-teal {
+  @include button-variant($c-teal, white, scale-color($color: $c-teal, $lightness: -10%));
+}
 .btn-lblue {
   @include button-variant($c-lblue, white, scale-color($color: $c-lblue, $lightness: -10%));
 }
-
 .btn-blue {
   @include button-variant($c-blue, white, scale-color($color: $c-blue, $lightness: -10%));
 }
-
 .btn-lpurple {
   @include button-variant($c-lpurple, white, scale-color($color: $c-lpurple, $lightness: -10%));
 }
