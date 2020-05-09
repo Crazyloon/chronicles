@@ -1,9 +1,9 @@
 import React from 'react';
 import Hero from '../components/hero/hero';
 import CardDeck from '../components/card-deck/card-deck';
-import coffee from '../images/dalgona.jpg';
-import dirtyShoes from '../images/dirty-shoes.jpg'
-import gym from '../images/fitness_01.jpg';
+import coffee from '../images/cooking/dalgona.jpg';
+import dirtyShoes from '../images/travel/dirty-shoes.jpg'
+import gym from '../images/fitness/fitness_01.jpg';
 
 const cards = [
   {

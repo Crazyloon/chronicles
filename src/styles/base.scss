@@ -167,7 +167,7 @@ body {
   @include button-variant($c-lgreen, white, scale-color($color: $c-lgreen, $lightness: -10%));
 }
 .btn-green {
-  @include button-variant($c-green, white, scale-color($color: $c-green, $lightness: -10%));
+  @include button-variant($c-green, $c-green, scale-color($color: $c-green, $lightness: -10%));
 }
 .btn-lred {
   @include button-variant($c-lred, white, scale-color($color: $c-lred, $lightness: -10%));
