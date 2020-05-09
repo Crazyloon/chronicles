@@ -1,0 +1,51 @@
+{
+  "cardData": {
+    "mainImg": "url",
+    "header": "string / max (28 characters)",
+    "body": "string / max (256 characters)"
+  },
+  "recipie": {
+    "ingredients": [
+      {
+        "ingredient": "name",
+        "amount": 0.5,
+        "measurement": "tbsp/tsp/cup etc"
+      }
+    ],
+    "requiredTools": [
+      {
+        "tool": "name",
+        "alternative": "name"
+      }
+    ],
+    "tags": [
+      {
+        "type": "tool/ingredient"
+      }
+    ],
+    "steps": [
+      "mix ingredients", "cook food", "eat"
+    ],
+    "rating": 5
+  },
+  "heroes": [
+    {
+      "src": "url",
+      "caption": "string (max 48 characters)",
+      "detail": "string (max 120 characters)"
+    }
+  ],
+  "imgGallery": [
+    {
+      "src": "url",
+      "caption": "string (max 48 characters)",
+      "detail": "string (max 120 characters)"
+    }
+  ],
+  "name": "string (max 80 characters)",
+  "summary": "string (max 500 characters)",
+  "time": {
+    "prep": 15,
+    "cook": 30
+  }
+}
