@@ -10,7 +10,9 @@ import HomePage from './pages/home';
 import NotFoundPage from './pages/notfoundpage';
 import Footer from './components/footer/footer';
 import { HorizontalBorder } from './components/border/border';
+
 import Cooking from './pages/cooking';
+import Dish from './pages/dish';
 
 const history = createBrowserHistory();
 
@@ -41,6 +43,7 @@ function App() {
           <Route exact path="/cooking" component={Cooking} />
           <Route exact path="/travel" component={HomePage} />
           <Route exact path="/fitness" component={HomePage} />
+          <Route exact path="/cooking/:meal" component={Dish} />
           <Route exact component={NotFoundPage} />
         </Switch>
       </Router>
