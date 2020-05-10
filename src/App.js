@@ -31,6 +31,7 @@ const navigationPages = [
   },
 ]
 
+
 function App() {
 
   return (
@@ -43,7 +44,7 @@ function App() {
           <Route exact path="/cooking" component={Cooking} />
           <Route exact path="/travel" component={HomePage} />
           <Route exact path="/fitness" component={HomePage} />
-          <Route exact path="/cooking/:meal" component={Dish} />
+          <Route exact path="/recipies/:dish" component={Dish} />
           <Route exact component={NotFoundPage} />
         </Switch>
       </Router>

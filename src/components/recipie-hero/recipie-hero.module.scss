@@ -1,0 +1,39 @@
+@import '../../styles/variables.scss';
+
+.recipieHeroWrapper{
+  float: none;
+  text-align: center;
+  transform: translate(0, -125px);
+}
+.recipieHero{
+  height: 320px;
+  display:flex;
+  flex-direction: column;
+  text-align: center;
+  color: $c-primary;
+  margin-top: 175px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.recipieImg{
+  align-self: center;
+  z-index: 1;
+  max-width: 250px;
+  width: 50vw;
+  max-height: 250px;
+  height: 50vw;
+  border-radius: 50%;
+  border: 1px solid $c-t-lgray;
+  margin-bottom: 25px;
+}
+
+.time{
+  :first-child{
+    display: block;
+  }
+  span {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+}

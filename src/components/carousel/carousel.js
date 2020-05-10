@@ -6,10 +6,10 @@ const HeroCarousel = ({ heroes }) => {
     <Carousel>
       {heroes.map((hero) => (
         <Carousel.Item>
-          <img className="d-block w-100" src="hero.src" alt="First slide" />
+          <img className="d-block w-100" src={hero.src} alt="First slide" />
           <Carousel.Caption>
-            <h3>hero.caption</h3>
-            <p>hero.detail</p>
+            <h3>{hero.caption}</h3>
+            <p>{hero.detai}l</p>
           </Carousel.Caption>
         </Carousel.Item>
       ))}
