@@ -1,13 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
+
 
 const AddRecipiePage = ({ingredients, measurements}) => {
   ingredients = ['egg', 'onion', 'garlic', 'water', 'pepper', 'salt'];
+  let initialSteps = ["mix ingredients", "cook food", "eat"];
+  initialSteps = initialSteps.map((step, i) => step = {'name': step, 'edit': false})
+  
+  let [steps, setSteps] = useState(initialSteps || []);
+
+  const handleAddStep = () => {
+    setSteps([...steps, 'Next Step']);
+  }
+  const handleDeleteStep = (i) => {
+    let filteredSteps = [...steps];
+    filteredSteps = filteredSteps.slice(0, i).concat(filteredSteps.slice(i + 1, filteredSteps.length));
+    setSteps(filteredSteps);
+  }
+
+  const toggleEditMode = (i) => {
+    let editSteps = [...steps];
+    let step = editSteps[i];
+    step.edit = !step.edit;
+    setSteps(editSteps);
+  }
+  
   return (
-    <main className="add-recipie-page bg-w">
+    <main className="add-recipie-page bg-lg">
       <div className='add-recipie-header bg-tlg'>
         <h3>Add Recipie</h3>
       </div>
-      <form className="form add-recipie-body">
+      <form className="form add-recipie-body bg-w">
         <section className="main-info-section">
           <div className="form-group">
             <label for="name">Name:</label>
@@ -48,8 +70,8 @@ const AddRecipiePage = ({ingredients, measurements}) => {
 
             <div className='form-subgroup'>
               <select id='ingredients' className='form-control'>
-                {ingredients.map(ingredient => (
-                  <option value='ingredient'>{ingredient}</option>
+                {ingredients.map((ingredient, i) => (
+                  <option key={i} value='ingredient'>{ingredient}</option>
                 ))}
               </select>
               <button type='button' className='btn btn-primary'>+ Add</button>
@@ -57,14 +79,36 @@ const AddRecipiePage = ({ingredients, measurements}) => {
           </div>
         </section>
         <section className="preperation-steps">
-        <div className='form-group'>
+          <div className='form-group'>
             <div className='form-subgroup'>
               <label for='steps'>Preparation Steps:</label>
-              <button type='button' className='btn btn-primary'>+ Add</button>
+              <button onClick={() => handleAddStep()} type='button' className='btn btn-primary'>+ Add</button>
             </div>
-              
+            <div>
+              <ol className='step-list'>
+                {steps.map((step, i) => (
+                  <li key={i} className={(step.edit ? 'edit' : 'done') + ' step-item'}>
+                    <div className='step-name'>
+                      <span>{step.name}</span>
+                    </div>
+                    <div className='step-buttons'>
+                      <button onClick={() => handleDeleteStep(i)} type='button' className='btn btn-sm btn-danger delete-btn'>[] Delete</button>
+                      <button onClick={() => toggleEditMode(i)} type='button' className='btn btn-sm btn-success done-btn'>$ Done</button>
+                      <button onClick={() => toggleEditMode(i)} type='button' className='btn btn-sm btn-warning edit-btn'>/ Edit</button>
+                    </div>
+                    {step.edit ? 
+                      <div className='step-text'>
+                        <textarea id={'step-text-' + i} />
+                      </div>
+                      : null
+                    }
+                  </li>
+                ))}
+              </ol>
+            </div>
           </div>
         </section>
+        <button type='button' className='btn btn-success btn-block'>Add Recipie</button>
       </form>
     </main>
   );

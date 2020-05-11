@@ -1,6 +1,6 @@
 .add-recipie-page{
   color: $c-lblack;
-  padding-bottom: 15px;
+  padding: 0 15px 15px 15px;
   max-width: 700px;
   margin: auto;
   border-top-left-radius: 4px;
@@ -64,28 +64,74 @@
     .ingredient-heading {
       align-self: center;
     }
-    .ingredient-list{
-      margin: 0;
-      list-style: none;
-      counter-reset: li;
-      li {
-        position: relative;
-        //margin-bottom: 2px;
+  }
+
+  .step-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    counter-reset: li;
+
+    
+    li.step-item {
+      display: flex;
+      align-items: center;
+      margin: 5px 0;
+      padding: 5px 5px 5px 45px;
+      border: 1px solid $c-t-gray;
+      position: relative;
+    }
+    li.step-item:before {
+      content: counter(li)'.';
+      counter-increment: li;
+      position: absolute;
+      background-color: $c-lblue;
+      border-radius: 50%;
+      height: 1.5rem;
+      width: 1.5rem;
+      color: #fff;
+      transform: translateX(-160%);
+      text-align: center;
+    }
+    li.done:before {
+      background-color: $success;
+    } 
+    li.edit:before {
+      background-color: $warning;
+    } 
+
+    .step-name {
+      flex-grow: 1;
+    }
+    .step-buttons {
+      flex-grow: 1;
+      margin-left: auto;
+      :last-child {
+        margin-left: 0.75rem;
       }
-      li:before {
-        content: counter(li)'.';
-        counter-increment: li;
-        position: absolute;
-        background-color: $c-lblue;//#debc4c;
-        border-radius: 50%;
-        height: 1.5rem;
-        width: 1.5rem;
-        color: #fff;
-        transform: translateX(-160%);
-        // line-height: 21px;
-        text-align: center;
-        // top: 2px;
-        // left: -15px;
+    }
+    .break {
+      flex-basis: 100%;
+      width: 0;      
+    }
+    .step-text {
+      padding: 10px;
+    }
+
+    .done {
+      .delete-btn, .edit-btn {
+        display: inline-block;
+      }
+      .done-btn {
+        display: none;
+      }
+    }
+    .edit {
+      .done-btn {
+        display: inline-block;
+      }
+      .delete-btn, .edit-btn {
+        display: none;
       }
     }
   }
