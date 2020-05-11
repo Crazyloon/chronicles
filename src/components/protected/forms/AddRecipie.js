@@ -23,7 +23,7 @@ const AddRecipiePage = ({ ingredients, measurements }) => {
   let [steps, setSteps] = useState(initialSteps || []);
 
   const handleAddStep = () => {
-    setSteps([...steps, "Next Step"]);
+    setSteps([...steps, {text: "Next Step"}]);
   };
   const handleDeleteStep = (i) => {
     let filteredSteps = [...steps];
@@ -36,6 +36,7 @@ const AddRecipiePage = ({ ingredients, measurements }) => {
   const toggleEditMode = (i) => {
     let editSteps = [...steps];
     let step = editSteps[i];
+    if (!('edit' in step)) step.text = '';
     step.edit = !step.edit;
     setSteps(editSteps);
   };
@@ -56,7 +57,7 @@ const AddRecipiePage = ({ ingredients, measurements }) => {
       <form className="form add-recipie-body bg-w">
         <section className="main-info-section">
           <div className="form-group">
-            <label for="name">Name:</label>
+            <label htmlFor="name">Name:</label>
             <input
               id="name"
               className="form-control"
@@ -66,7 +67,7 @@ const AddRecipiePage = ({ ingredients, measurements }) => {
           </div>
 
           <div className="form-group">
-            <label for="summary">Summary:</label>
+            <label htmlFor="summary">Summary:</label>
             <textarea
               id="summary"
               className="form-control"
@@ -77,7 +78,7 @@ const AddRecipiePage = ({ ingredients, measurements }) => {
             />
           </div>
 
-          <label for="servings">Servings:</label>
+          <label htmlFor="servings">Servings:</label>
           <input
             id="servings"
             className="form-control"
@@ -85,7 +86,7 @@ const AddRecipiePage = ({ ingredients, measurements }) => {
             placeholder="4 cups"
           />
 
-          <label for="prep-time">Prep Time (minutes):</label>
+          <label htmlFor="prep-time">Prep Time (minutes):</label>
           <input
             id="prep-time"
             className="form-control"
@@ -93,7 +94,7 @@ const AddRecipiePage = ({ ingredients, measurements }) => {
             placeholder="20 minutes"
           />
 
-          <label for="cook-time">Cook Time (minutes):</label>
+          <label htmlFor="cook-time">Cook Time (minutes):</label>
           <input
             id="cook-time"
             className="form-control"
@@ -103,7 +104,7 @@ const AddRecipiePage = ({ ingredients, measurements }) => {
         </section>
         <section className="ingredients">
           <div className="form-group">
-            <label for="ingredients">Ingredients:</label>
+            <label htmlFor="ingredients">Ingredients:</label>
 
             <div className="form-subgroup">
               <select id="ingredients" className="form-control">
@@ -122,7 +123,7 @@ const AddRecipiePage = ({ ingredients, measurements }) => {
         <section className="preperation-steps">
           <div className="form-group">
             <div className="form-subgroup">
-              <label for="steps">Preparation Steps:</label>
+              <label htmlFor="steps">Preparation Steps:</label>
               <button
                 onClick={() => handleAddStep()}
                 type="button"
@@ -139,7 +140,7 @@ const AddRecipiePage = ({ ingredients, measurements }) => {
                     className={(step.edit ? "edit" : "done") + " step-item"}
                   >
                     <div className="step-name">
-                      <span>{step.text}</span>
+                      <span className={!('edit' in step) ? 'text-muted' : ''}>{step.text}</span>
                     </div>
                     <div className="step-buttons">
                       <button
