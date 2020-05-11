@@ -184,7 +184,7 @@ const AddRecipiePage = ({ ingredients, measurements }) => {
           </div>
         </section>
         <button type="button" className="btn btn-success btn-block">
-          <FontAwesomeIcon icon={faSave} /> Saveg Recipie
+          <FontAwesomeIcon icon={faSave} /> Save Recipie
         </button>
       </form>
     </main>
