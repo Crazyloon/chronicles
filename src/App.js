@@ -13,7 +13,7 @@ import { HorizontalBorder } from './components/border/border';
 
 import Cooking from './pages/cooking';
 import Dish from './pages/dish';
-import AddRecipiePage from './components/protected/forms/AddRecipie';
+import AddRecipiePage from './components/protected/forms/add-recipie-form/AddRecipie';
 
 const history = createBrowserHistory();
 
