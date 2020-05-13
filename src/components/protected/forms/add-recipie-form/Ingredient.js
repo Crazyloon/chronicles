@@ -65,7 +65,7 @@ const Ingredients = ({
                     <span
                       className={!("edit" in ingredient) ? "text-muted" : ""}
                     >
-                      {ingredient.name}
+                      {ingredient.name} ({ingredient.amount} {ingredient.measurement})
                     </span>
                   )}
                 </div>
@@ -102,6 +102,7 @@ const Ingredients = ({
                           id={"amount-" + i}
                           value={ingredient.amount}
                           type="number"
+                          step='0.5'
                           onChange={(event) => handleAmountChange(event, i)}
                         />
                       </div>
@@ -118,7 +119,7 @@ const Ingredients = ({
                           }
                         >
                           {measurementOptions.map((measurement) => (
-                            <option>{measurement}</option>
+                            <option value={measurement}>{measurement}</option>
                           ))}
                         </select>
                       </div>
