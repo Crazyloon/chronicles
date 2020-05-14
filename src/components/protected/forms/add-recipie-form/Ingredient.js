@@ -33,6 +33,7 @@ const Ingredients = ({
           </select>
           <button
             type="button"
+            tabIndex='6'
             onClick={() => {
               handleAddIngredient();
             }}
@@ -54,6 +55,7 @@ const Ingredients = ({
                       <label htmlFor={"ingredient-name-" + i}>Name: </label>
                       <input
                         id={'ingredient-name-' + i}
+                        tabIndex='7'
                         value={ingredient.name}
                         type="text"
                         onChange={(event) =>
@@ -71,6 +73,7 @@ const Ingredients = ({
                 </div>
                 <div className="step-buttons">
                   <button
+                    tabIndex='-1'
                     onClick={() => handleDeleteIngredient(i)}
                     type="button"
                     className="btn btn-sm btn-danger delete-btn"
@@ -78,6 +81,7 @@ const Ingredients = ({
                     <FontAwesomeIcon icon={faTrash} />
                   </button>
                   <button
+                    tabIndex='10'
                     onClick={() => toggleEditIngredient(i)}
                     type="button"
                     className="btn btn-sm btn-success done-btn"
@@ -85,6 +89,7 @@ const Ingredients = ({
                     <FontAwesomeIcon icon={faCheck} /> Done
                   </button>
                   <button
+                    tabIndex='-1'
                     onClick={() => toggleEditIngredient(i)}
                     type="button"
                     className="btn btn-sm btn-warning edit-btn"
@@ -100,6 +105,7 @@ const Ingredients = ({
                         <label htmlFor={"amount-" + i}>Amount: </label>
                         <input
                           id={"amount-" + i}
+                          tabIndex='8'
                           value={ingredient.amount}
                           type="number"
                           step='0.5'
@@ -112,14 +118,15 @@ const Ingredients = ({
                         </label>
                         <select
                           id={"measurement-" + i}
+                          tabIndex='9'
                           value={ingredient.measurement} 
                           className="measurement-options"
                           onChange={(event) =>
                             handleMeasurementChange(event, i)
                           }
                         >
-                          {measurementOptions.map((measurement) => (
-                            <option value={measurement}>{measurement}</option>
+                          {measurementOptions.map((measurement, i) => (
+                            <option key={i} value={measurement}>{measurement}</option>
                           ))}
                         </select>
                       </div>

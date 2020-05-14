@@ -20,6 +20,7 @@ const PreparationSteps = ({
         <div className="form-subgroup">
           <label htmlFor="steps">Preparation Steps:</label>
           <button
+          tabIndex='11'
             onClick={() => handleAddStep()}
             type="button"
             className="btn btn-primary"
@@ -42,6 +43,7 @@ const PreparationSteps = ({
                 <div className="step-buttons">
                   <button
                     onClick={() => handleDeleteStep(i)}
+                    tabIndex='-1'
                     type="button"
                     className="btn btn-sm btn-danger delete-btn"
                   >
@@ -49,6 +51,7 @@ const PreparationSteps = ({
                   </button>
                   <button
                     onClick={() => toggleEditStep(i)}
+                    tabIndex='13'
                     type="button"
                     className="btn btn-sm btn-success done-btn"
                   >
@@ -56,6 +59,7 @@ const PreparationSteps = ({
                   </button>
                   <button
                     onClick={() => toggleEditStep(i)}
+                    tabIndex='-1'
                     type="button"
                     className="btn btn-sm btn-warning edit-btn"
                   >
@@ -68,6 +72,7 @@ const PreparationSteps = ({
                     <div className="step-input">
                       <textarea
                         onChange={(event) => handleStepTextChange(event, i)}
+                        tabIndex='12'
                         placeholder="First, mix the ingredients."
                         value={step.text}
                         id={"step-text-" + i}

@@ -53,12 +53,12 @@ const AddRecipiePage = () => {
   let [recipie, setRecipie] = useState({});
 
   const handleAddStep = () => {
-    setSteps([...steps, { text: "Next Step" }]);
+    setSteps([...steps, { text: "", edit: true }]);
   };
   const handleAddIngredient = () => {
     setIngredients([
       ...ingredients,
-      { name: "Next Ingredient", amount: 1, measurement: 1, edit: true },
+      { name: "", amount: 1, measurement: 1, edit: true },
     ]);
   };
   const handleDeleteStep = (i) => {
@@ -103,50 +103,51 @@ const AddRecipiePage = () => {
 
   const handleNameChange = (event) => {
     let data = event.target.value;
-    setRecipie({...recipie, name: data})
-  }
+    setRecipie({ ...recipie, name: data });
+  };
   const handleSummaryChange = (event) => {
     let data = event.target.value;
-    setRecipie({...recipie, summary: data})
-  }
+    setRecipie({ ...recipie, summary: data });
+  };
   const handleServingsChange = (event) => {
     let data = event.target.value;
-    setRecipie({...recipie, servings: data})
-  }
+    setRecipie({ ...recipie, servings: data });
+  };
   const handlePrepTimeChange = (event) => {
     let data = event.target.value;
-    setRecipie({...recipie, prepTime: data})
-  }
+    setRecipie({ ...recipie, prepTime: data });
+  };
   const handleCookTimeChange = (event) => {
     let data = event.target.value;
-    setRecipie({...recipie, cookTime: data})
-  }
+    setRecipie({ ...recipie, cookTime: data });
+  };
 
   const handleIngredientNameChange = (event, i) => {
     let updatedIngredients = [...ingredients];
-    let ingredient = updatedIngredients.splice(i, 1)[0];
+    let ingredient = updatedIngredients[i];
     let data = event.target.value;
     ingredient.name = data;
-    setIngredients([...updatedIngredients, ingredient]);
-  }
+    setIngredients([...updatedIngredients]);
+  };
   const handleMeasurementChange = (event, i) => {
     let updatedIngredients = [...ingredients];
-    let ingredient = updatedIngredients.splice(i, 1)[0];
+    let ingredient = updatedIngredients[i];
     let data = event.target.value;
     ingredient.measurement = data;
-    setIngredients([...updatedIngredients, ingredient]);
-  }
+    setIngredients([...updatedIngredients]);
+  };
   const handleAmountChange = (event, i) => {
     let updatedIngredients = [...ingredients];
-    let ingredient = updatedIngredients.splice(i, 1)[0];
+    let ingredient = updatedIngredients[i];
     let data = event.target.value;
     ingredient.amount = data;
-    setIngredients([...updatedIngredients, ingredient]);
-  }
+    setIngredients([...updatedIngredients]);
+  };
 
   const handleSaveRecipie = () => {
-    console.log(`recipie saved: ${recipie}`);
-  }
+    setRecipie({...recipie, steps: steps, ingredients: ingredients})
+    console.log(`recipie saved: ${JSON.stringify(recipie)}`);
+  };
 
   return (
     <main className="add-recipie-page bg-lg">
@@ -154,7 +155,7 @@ const AddRecipiePage = () => {
         <h3>Add Recipie</h3>
       </div>
       <form className="form add-recipie-body bg-w">
-        <PrimaryInfo 
+        <PrimaryInfo
           handleNameChange={handleNameChange}
           handleSummaryChange={handleSummaryChange}
           handleServingsChange={handleServingsChange}
@@ -182,10 +183,18 @@ const AddRecipiePage = () => {
           toggleEditStep={toggleEditStep}
         />
 
-        <button type="button" className="btn btn-success btn-block">
-          <FontAwesomeIcon onClick={() => handleSaveRecipie()} icon={faSave} /> Save Recipie
+        <button
+          type="button"
+          onClick={() => handleSaveRecipie()}
+          tabIndex="14"
+          className="btn btn-success btn-block"
+        >
+          <FontAwesomeIcon icon={faSave} /> Save Recipie
         </button>
       </form>
+      <pre>
+        {JSON.stringify(recipie, null, 2)}
+      </pre>
     </main>
   );
 };

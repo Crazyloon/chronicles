@@ -13,6 +13,8 @@ const PrimaryInfo = ({
         <label htmlFor="name">Name:</label>
         <input
           id="name"
+          tabIndex='1'
+          onChange={(event) => handleNameChange(event)}
           className="form-control"
           type="text"
           placeholder="Garlic Shrimp"
@@ -23,6 +25,8 @@ const PrimaryInfo = ({
         <label htmlFor="summary">Summary:</label>
         <textarea
           id="summary"
+          tabIndex='2'
+          onChange={(event) => handleSummaryChange(event)}
           className="form-control"
           type="text"
           placeholder="What type of dish is it? Where is it from?
@@ -35,6 +39,8 @@ const PrimaryInfo = ({
         <label htmlFor="servings">Servings:</label>
         <input
           id="servings"
+          tabIndex='3'
+          onChange={(event) => handleServingsChange(event)}
           className="form-control"
           type="text"
           placeholder="4 cups"
@@ -45,6 +51,8 @@ const PrimaryInfo = ({
         <label htmlFor="prep-time">Prep Time (minutes):</label>
         <input
           id="prep-time"
+          tabIndex='4'
+          onChange={(event) => handlePrepTimeChange(event)}
           className="form-control"
           type="number"
           placeholder="20 minutes"
@@ -55,6 +63,8 @@ const PrimaryInfo = ({
         <label htmlFor="cook-time">Cook Time (minutes):</label>
         <input
           id="cook-time"
+          tabIndex='5'
+          onChange={(event) => handleCookTimeChange(event)}
           className="form-control"
           type="number"
           placeholder="20 minutes"
