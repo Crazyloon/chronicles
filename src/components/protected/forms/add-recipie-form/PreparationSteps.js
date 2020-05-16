@@ -35,11 +35,21 @@ const PreparationSteps = ({
                 key={i}
                 className={(step.edit ? "edit" : "done") + " step-item"}
               >
-                <div className="step-name">
+              {step.edit ? (
+                    <div className="step-input">
+                      <textarea
+                        onChange={(event) => handleStepTextChange(event, i)}
+                        tabIndex='12'
+                        placeholder="First, mix the ingredients."
+                        value={step.text}
+                        id={"step-text-" + i}
+                      />
+                    </div>
+                ) : <div className="step-name">
                   <span className={!("edit" in step) ? "text-muted" : ""}>
                     {step.text}
                   </span>
-                </div>
+                </div>}
                 <div className="step-buttons">
                   <button
                     onClick={() => handleDeleteStep(i)}
@@ -66,20 +76,6 @@ const PreparationSteps = ({
                     <FontAwesomeIcon icon={faPencilAlt} />
                   </button>
                 </div>
-                {step.edit ? (
-                  <>
-                    <div className="break"></div>
-                    <div className="step-input">
-                      <textarea
-                        onChange={(event) => handleStepTextChange(event, i)}
-                        tabIndex='12'
-                        placeholder="First, mix the ingredients."
-                        value={step.text}
-                        id={"step-text-" + i}
-                      />
-                    </div>
-                  </>
-                ) : null}
               </li>
             ))}
           </ol>
