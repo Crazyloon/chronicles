@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSave } from "@fortawesome/free-solid-svg-icons";
-import PreparationSteps from "../../form-parts/PreparationSteps";
-import Ingredients from "../../form-parts/Ingredient";
-import PrimaryInfo from "../../form-parts/PrimaryInfo";
+import PreparationSteps from "../../form-parts/add-recipie-form/PreparationSteps";
+import Ingredients from "../../form-parts/add-recipie-form/Ingredient";
+import PrimaryInfo from "../../form-parts/add-recipie-form/PrimaryInfo";
+import ImageUpload from "../../form-parts/img-upload/ImageUpload";
 
 const AddRecipiePage = ({initialSteps, initialIngredients}) => {
   let [steps, setSteps] = useState(initialSteps || []);
@@ -16,7 +17,7 @@ const AddRecipiePage = ({initialSteps, initialIngredients}) => {
   const handleAddIngredient = () => {
     setIngredients([
       ...ingredients,
-      { name: "", amount: 1, measurement: 1, edit: true },
+      { name: "", amount: 1, measurement: "", edit: true },
     ]);
   };
   const handleDeleteStep = (i) => {
@@ -138,6 +139,8 @@ const AddRecipiePage = ({initialSteps, initialIngredients}) => {
           handleStepTextChange={handleStepTextChange}
           toggleEditStep={toggleEditStep}
         />
+
+        <ImageUpload />
 
         <button
           type="button"
