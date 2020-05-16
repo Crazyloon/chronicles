@@ -59,11 +59,9 @@
       margin: 0;
     }
   }
-  
-  .add-recipie-ingredients {
-    .ingredient-heading {
-      align-self: center;
-    }
+
+  .ingredients {
+    margin-top: 15px;
   }
 
   .step-list {
@@ -81,6 +79,10 @@
       padding: 5px 5px 5px 45px;
       border: 1px solid $c-t-gray;
       position: relative;
+      .input-group{
+        justify-content: space-between;
+        margin-bottom: 5px;
+      }
     }
     li.step-item:before {
       content: counter(li)'.';
@@ -102,7 +104,7 @@
     } 
 
     .step-name {
-      flex-grow: 4;
+      flex-grow: 1;
       min-width: 0;
       span{
         max-width: 100%;
@@ -113,7 +115,7 @@
       }
     }
     .step-buttons {
-      flex-grow: 1;
+      flex-grow: 4;
       text-align: right;
     }
     .break {

@@ -5,49 +5,7 @@ import PreparationSteps from "./PreparationSteps";
 import Ingredients from "./Ingredient";
 import PrimaryInfo from "./PrimaryInfo";
 
-const AddRecipiePage = () => {
-  let ingredientOptions = [
-    "egg",
-    "onion",
-    "shrimp",
-    "water",
-    "tomatoe",
-    "salt",
-    "pepper",
-  ];
-  let measurementOptions = [
-    "kg",
-    "cup",
-    "tbsp",
-    "tsp",
-    "oz",
-    "l",
-    "ml",
-    "pound",
-  ];
-  let initialIngredients = [
-    {
-      name: "shrimp",
-      amount: 2,
-      measurement: "cups",
-    },
-    {
-      name: "onion",
-      amount: 0.5,
-      measurement: "medium",
-    },
-    {
-      name: "garlic",
-      amount: 6,
-      measurement: "cloves",
-    },
-  ].map((ingredient, i) => (ingredient = { ...ingredient, edit: false }));
-  let initialSteps = [
-    "mix ingredients until fully mixed in the bowl and make sure they're totally mixed like all the way mixed - no joke",
-    "cook food",
-    "eat",
-  ].map((step, i) => (step = { text: step, edit: false }));
-
+const AddRecipiePage = ({initialSteps, initialIngredients}) => {
   let [steps, setSteps] = useState(initialSteps || []);
   let [ingredients, setIngredients] = useState(initialIngredients || []);
   let [recipie, setRecipie] = useState({});
@@ -165,8 +123,6 @@ const AddRecipiePage = () => {
 
         <Ingredients
           ingredients={ingredients}
-          ingredientOptions={ingredientOptions}
-          measurementOptions={measurementOptions}
           handleAddIngredient={handleAddIngredient}
           handleDeleteIngredient={handleDeleteIngredient}
           toggleEditIngredient={toggleEditIngredient}
