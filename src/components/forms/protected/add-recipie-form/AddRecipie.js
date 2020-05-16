@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSave } from "@fortawesome/free-solid-svg-icons";
-import PreparationSteps from "./PreparationSteps";
-import Ingredients from "./Ingredient";
-import PrimaryInfo from "./PrimaryInfo";
+import PreparationSteps from "../../form-parts/PreparationSteps";
+import Ingredients from "../../form-parts/Ingredient";
+import PrimaryInfo from "../../form-parts/PrimaryInfo";
 
 const AddRecipiePage = ({initialSteps, initialIngredients}) => {
   let [steps, setSteps] = useState(initialSteps || []);
