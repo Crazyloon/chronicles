@@ -17,7 +17,7 @@ const ThumbNail = ({ src, alt = "thumbnail", caption, detail }) => {
         onClick={() => transformImgScale()}
         className={expand + " img-thumbnail"}
         src={src}
-        alt={alt}
+        alt={alt ? alt : "image thumbnail"}
       />
       {expand === collapse.expand ? <span className='thumb-caption'>{caption}</span> : null}
     </div>

@@ -6,8 +6,9 @@ const ThumbNailGallery = ({ thumbnails }) => {
 
   return (
     <div className="thumbnail-section mb-3 bg-w">
-      {thumbnails.map((thumbnail) => (
+      {thumbnails.map((thumbnail, i) => (
         <ThumbNail
+          key={i}
           src={thumbnail.src}
           alt={thumbnail.alt}
           caption={thumbnail.caption}

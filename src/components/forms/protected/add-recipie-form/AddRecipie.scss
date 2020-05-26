@@ -65,6 +65,10 @@
   .ingredients {
     margin-top: 15px;
   }
+  
+  .preperation-steps {
+    margin-top: 15px;
+  }
 
   .step-list {
     padding: 0;
@@ -171,6 +175,25 @@
         display: none;
       }
     }
+  }
+
+  .toast {
+    position: fixed;
+    bottom: 55px;
+    right: 10px;
+  }
+
+  .toast-header {
+    background-color: $c-orange;
+    color: $c-white;
+    button.close {
+      color: $c-white;
+    }
+  }
+  
+  .toast-body {
+    color: $c-lorange;
+    background-color: $c-white;
   }
 }
 

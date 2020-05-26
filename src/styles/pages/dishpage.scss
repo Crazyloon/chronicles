@@ -1,46 +1,10 @@
+@import '../../components/thumbnail/thumbnails.scss';
+
 .dish-page{
   color: $c-lblack;
   padding-bottom: 15px;
   max-width: 700px;
   margin: auto;
-  
-  .thumbnail-section{
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 15px;
-    .thumb {
-      width: 100px;
-      height: 100px;
-      margin: 0 5px;
-    }
-    .thumb-caption{
-      font-size: 1.2rem;
-      position: relative;
-      z-index: 2;
-      color: $c-white;
-      text-shadow: 1px 1px $c-black;
-      overflow: visible;
-      display: block;
-      width: 270px;
-      text-align: center;
-      transform: translateX(-85px);
-    }
-    .img-thumbnail{
-      background-color: $c-lblue;
-      cursor: pointer;
-      position: relative;
-    }
-    // .img-collapse {
-    //   display: inline-block;
-    // }
-    .img-expand {
-      transform: scale(3);
-      z-index: 1;
-    }    
-  }
 
   .dish-body{
     border-top-left-radius: 4px;

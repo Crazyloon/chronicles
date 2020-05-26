@@ -1,21 +1,43 @@
-import React, { useState } from 'react';
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileUpload } from "@fortawesome/free-solid-svg-icons";
+import ThumbnailGallery from '../../../thumbnail/thumbnail-gallery';
 
-const ImageUpload = ({mode, onChange}) => {
-  let [files, setFiles] = useState([]);
-
-  return ( 
-    <div className='img-upload'>
-      <h4 className='img-upload-heading'>Select images on your device to upload</h4>
-      <div className='img-upload-btn-container'>
-        <div className='img-upload-btn'>
-          <FontAwesomeIcon icon={faFileUpload} size='6x' />
-          <div class='btn btn-primary btn-block'>Select Images</div>
+const ImageUpload = ({ mode, images, onImagesChange }) => {
+  return (
+    <div className="img-select">
+      <h4 className="img-select-heading">
+        Select images on your device to upload
+      </h4>
+      <div className="img-select-btn-container">
+        <div className="img-select-btn">
+          <input onChange={onImagesChange} type="file" multiple />
+          <div className="img-select-icon">
+            <FontAwesomeIcon icon={faFileUpload} size="6x" />
+          </div>
+          <button type="button" className="btn btn-block btn-secondary">
+            Upload a file
+          </button>
         </div>
       </div>
+      <div className='selected-img-thumbnails'>
+        <ThumbnailGallery thumbnails={images} />
+      </div>
+      {/* <div className="selected-img-thumbnails">
+        <div className="img-thumbnail">
+          <img src={images[0]} />
+        </div>
+        <div className="img-thumbnail"></div>
+        <div className="img-thumbnail"></div>
+        <div className="img-thumbnail"></div>
+      </div> */}
+      <div className="img-upload-btn-container">
+        <button type="button" className="btn btn-primary btn-block">
+          Upload Images
+        </button>
+      </div>
     </div>
-   );
-}
- 
+  );
+};
+
 export default ImageUpload;
