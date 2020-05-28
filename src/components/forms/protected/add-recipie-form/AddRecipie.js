@@ -5,69 +5,71 @@ import PreparationSteps from "../../form-parts/add-recipie-form/PreparationSteps
 import Ingredients from "../../form-parts/add-recipie-form/Ingredient";
 import PrimaryInfo from "../../form-parts/add-recipie-form/PrimaryInfo";
 import ImageUpload from "../../form-parts/img-upload/ImageUpload";
-import { Toast } from 'react-bootstrap';
-import axios from 'axios';
-//import { HorizontalBorder } from "../../../border/border";
+import { Toast } from "react-bootstrap";
+import axios from "axios";
 
-const AddRecipiePage = ({initialSteps, initialIngredients}) => {
-  let [steps, setSteps] = useState(initialSteps || []);
-  let [ingredients, setIngredients] = useState(initialIngredients || []);
-  let [recipie, setRecipie] = useState({});
-  let [images, setImages] = useState([]);
+const AddRecipiePage = ({ initialSteps, initialIngredients }) => {
+  let [recipie, setRecipie] = useState({ ingredients: [], steps: [] });
   let [previewImages, setPreviewImages] = useState([]);
   let [showToast, setShowToast] = useState(false);
   let [formData, setFormData] = useState();
 
   let maxImages = 6;
-  let maxImgWarning = `A maximum of ${maxImages} images are allowed at once`
+  let maxImgWarning = `A maximum of ${maxImages} images are allowed at once`;
 
   const handleAddStep = () => {
-    setSteps([...steps, { text: "", edit: true }]);
+    setRecipie({
+      ...recipie,
+      steps: [...recipie.steps, { text: "", edit: true }],
+    });
   };
   const handleAddIngredient = () => {
-    setIngredients([
-      ...ingredients,
-      { name: "", amount: 1, measurement: "", edit: true },
-    ]);
+    setRecipie({
+      ...recipie,
+      ingredients: [
+        ...recipie.ingredients,
+        { name: "", amount: 1, measurement: "", edit: true },
+      ],
+    });
   };
   const handleDeleteStep = (i) => {
-    let filteredSteps = [...steps];
+    let filteredSteps = [...recipie.steps];
     filteredSteps = filteredSteps
       .slice(0, i)
       .concat(filteredSteps.slice(i + 1, filteredSteps.length));
-    setSteps(filteredSteps);
+    setRecipie({ ...recipie, steps: filteredSteps });
   };
 
   const handleDeleteIngredient = (i) => {
-    let filteredIngredients = [...ingredients];
+    let filteredIngredients = [...recipie.ingredients];
     filteredIngredients = filteredIngredients
       .slice(0, i)
       .concat(filteredIngredients.slice(i + 1, filteredIngredients.length));
-    setIngredients(filteredIngredients);
+    setRecipie({ ...recipie, ingredients: filteredIngredients });
   };
 
   const toggleEditIngredient = (i) => {
-    let editIngredients = [...ingredients];
+    let editIngredients = [...recipie.ingredients];
     let ingredient = editIngredients[i];
     if (!("edit" in ingredient)) ingredient.name = "";
     ingredient.edit = !ingredient.edit;
-    setIngredients(editIngredients);
+    setRecipie({ ...recipie, ingredients: editIngredients });
   };
 
   const toggleEditStep = (i) => {
-    let editSteps = [...steps];
+    let editSteps = [...recipie.steps];
     let step = editSteps[i];
     if (!("edit" in step)) step.text = "";
     step.edit = !step.edit;
-    setSteps(editSteps);
+    setRecipie({ ...recipie, steps: editSteps });
   };
 
   const handleStepTextChange = (event, i) => {
     let text = event.target.value;
-    let stepsList = [...steps];
+    let stepsList = [...recipie.steps];
     let step = stepsList[i];
     step.text = text;
-    setSteps(stepsList);
+    setRecipie({ ...recipie, steps: stepsList });
   };
 
   const handleNameChange = (event) => {
@@ -92,75 +94,64 @@ const AddRecipiePage = ({initialSteps, initialIngredients}) => {
   };
 
   const handleIngredientNameChange = (event, i) => {
-    let updatedIngredients = [...ingredients];
+    let updatedIngredients = [...recipie.ingredients];
     let ingredient = updatedIngredients[i];
     let data = event.target.value;
     ingredient.name = data;
-    setIngredients([...updatedIngredients]);
+    setRecipie({ ...recipie, ingredients: [...updatedIngredients] });
   };
+
   const handleMeasurementChange = (event, i) => {
-    let updatedIngredients = [...ingredients];
+    let updatedIngredients = [...recipie.ingredients];
     let ingredient = updatedIngredients[i];
     let data = event.target.value;
     ingredient.measurement = data;
-    setIngredients([...updatedIngredients]);
+    setRecipie({ ...recipie, ingredients: [...updatedIngredients] });
   };
+  
   const handleAmountChange = (event, i) => {
-    let updatedIngredients = [...ingredients];
+    let updatedIngredients = [...recipie.ingredients];
     let ingredient = updatedIngredients[i];
     let data = event.target.value;
     ingredient.amount = data;
-    setIngredients([...updatedIngredients]);
+    setRecipie({ ...recipie, ingredients: [...updatedIngredients] });
   };
 
   const handleOnImagesChange = (event) => {
     let files = event.target.files;
     // setup for upload
-    let imgData = new FormData();//.append('images', files);
-    
-    let imgFiles = [];
-    
+    let imgData = new FormData();
+    imgData.append('images', files);
 
-    // setup for preview
-    if(files.length > maxImages) {
+    // Warn of too many images
+    if (files.length > maxImages) {
       setShowToast(true);
       return;
     }
+
+    // Setup images for preview
     let keys = Object.keys(files);
     let imgs = [];
     keys.forEach((key, i) => {
-      imgFiles[i] = files.item(i);
       let url = URL.createObjectURL(files[i]);
       imgs.push({ src: url });
     });
     setPreviewImages(imgs);
-
-    imgFiles.forEach((img, i) => {
-      console.log(img);
-      imgData.append('images', img, img.name);
-      console.log('img data', imgData);
-    });
-    setImages(imgFiles);
     setFormData(imgData);
-    console.log("IMG DATA: ", images, formData);
-  }
+  };
 
   const handleSaveRecipie = () => {
-    setRecipie({
-      ...recipie, 
-      steps: steps,
-      ingredients: ingredients
-    });
-    console.log(`recipie saved: ${JSON.stringify(recipie)}`);
-    
     let config = {
       headers: {
-        'content-type': 'multipart/form-data'
-      }
+        "content-type": "multipart/form-data",
+      },
     };
-    formData.append('recipie', JSON.stringify(recipie));
-    axios.post("/api/recipie", formData, config).then(resp => console.log("RESPOSNE", resp));
-    // axios.post("/api/recipie", recipie).then(resp => console.log("RESPOSNE", resp));
+    formData.append("recipie", JSON.stringify(recipie));
+    formData.append("event", 'UPLOAD_RECIPIE');
+    setFormData(formData);
+    axios
+      .post("/api/recipie", formData, config)
+      .then((resp) => console.log("RESPOSNE", resp));
   };
 
   return (
@@ -168,7 +159,7 @@ const AddRecipiePage = ({initialSteps, initialIngredients}) => {
       <div className="add-recipie-header">
         <h3>Add Recipie</h3>
       </div>
-      <form className="form add-recipie-body bg-w" encType='mulipart/form-data'>
+      <form className="form add-recipie-body bg-w" encType="mulipart/form-data">
         <PrimaryInfo
           handleNameChange={handleNameChange}
           handleSummaryChange={handleSummaryChange}
@@ -178,7 +169,7 @@ const AddRecipiePage = ({initialSteps, initialIngredients}) => {
         />
 
         <Ingredients
-          ingredients={ingredients}
+          ingredients={recipie.ingredients}
           handleAddIngredient={handleAddIngredient}
           handleDeleteIngredient={handleDeleteIngredient}
           toggleEditIngredient={toggleEditIngredient}
@@ -188,14 +179,17 @@ const AddRecipiePage = ({initialSteps, initialIngredients}) => {
         />
 
         <PreparationSteps
-          steps={steps}
+          steps={recipie.steps}
           handleAddStep={handleAddStep}
           handleDeleteStep={handleDeleteStep}
           handleStepTextChange={handleStepTextChange}
           toggleEditStep={toggleEditStep}
         />
 
-        <ImageUpload images={previewImages} onImagesChange={handleOnImagesChange} />
+        <ImageUpload
+          images={previewImages}
+          onImagesChange={handleOnImagesChange}
+        />
 
         <button
           type="button"
@@ -206,10 +200,13 @@ const AddRecipiePage = ({initialSteps, initialIngredients}) => {
           <FontAwesomeIcon icon={faSave} /> Save Recipie
         </button>
       </form>
-      <pre>
-        {JSON.stringify(recipie, null, 2)}
-      </pre>
-      <Toast onClose={() => setShowToast(false)} show={showToast} delay={3000} autohide={true}>
+      <pre>{JSON.stringify(recipie, null, 2)}</pre>
+      <Toast
+        onClose={() => setShowToast(false)}
+        show={showToast}
+        delay={3000}
+        autohide={true}
+      >
         <Toast.Header closeButton={true}>
           <strong className="mr-auto">Warning</strong>
         </Toast.Header>

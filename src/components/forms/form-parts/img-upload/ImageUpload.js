@@ -23,19 +23,6 @@ const ImageUpload = ({ mode, images, onImagesChange }) => {
       <div className='selected-img-thumbnails'>
         <ThumbnailGallery thumbnails={images} />
       </div>
-      {/* <div className="selected-img-thumbnails">
-        <div className="img-thumbnail">
-          <img src={images[0]} />
-        </div>
-        <div className="img-thumbnail"></div>
-        <div className="img-thumbnail"></div>
-        <div className="img-thumbnail"></div>
-      </div> */}
-      <div className="img-upload-btn-container">
-        <button type="button" className="btn btn-primary btn-block">
-          Upload Images
-        </button>
-      </div>
     </div>
   );
 };

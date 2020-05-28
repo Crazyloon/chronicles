@@ -53,7 +53,7 @@ const PreparationSteps = ({
                 <div className="step-buttons">
                   <button
                     onClick={() => handleDeleteStep(i)}
-                    tabIndex='-1'
+                    tabIndex='31'
                     type="button"
                     className="btn btn-sm btn-danger delete-btn"
                   >
@@ -69,7 +69,7 @@ const PreparationSteps = ({
                   </button>
                   <button
                     onClick={() => toggleEditStep(i)}
-                    tabIndex='-1'
+                    tabIndex='21'
                     type="button"
                     className="btn btn-sm btn-warning edit-btn"
                   >
