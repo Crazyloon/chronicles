@@ -11,7 +11,7 @@ const ImageUpload = ({ mode, images, onImagesChange }) => {
       </h4>
       <div className="img-select-btn-container">
         <div className="img-select-btn">
-          <input onChange={onImagesChange} type="file" multiple />
+          <input tabIndex="14" onChange={onImagesChange} type="file" multiple />
           <div className="img-select-icon">
             <FontAwesomeIcon icon={faFileUpload} size="6x" />
           </div>
