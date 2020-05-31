@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSave } from "@fortawesome/free-solid-svg-icons";
-import PreparationSteps from "../../form-parts/add-recipie-form/PreparationSteps";
-import Ingredients from "../../form-parts/add-recipie-form/Ingredient";
-import PrimaryInfo from "../../form-parts/add-recipie-form/PrimaryInfo";
+import PreparationSteps from "../../form-parts/add-recipe-form/PreparationSteps";
+import Ingredients from "../../form-parts/add-recipe-form/Ingredient";
+import PrimaryInfo from "../../form-parts/add-recipe-form/PrimaryInfo";
 import ImageUpload from "../../form-parts/img-upload/ImageUpload";
 import { Toast } from "react-bootstrap";
 import axios from "axios";
 
-const AddRecipiePage = ({ initialSteps, initialIngredients }) => {
-  let [recipie, setRecipie] = useState({ ingredients: [], steps: [] });
+const AddrecipePage = ({ initialSteps, initialIngredients }) => {
+  let [recipe, setrecipe] = useState({ ingredients: [], steps: [] });
   let [previewImages, setPreviewImages] = useState([]);
   let [showToast, setShowToast] = useState(false);
   let [formData, setFormData] = useState();
@@ -18,103 +18,103 @@ const AddRecipiePage = ({ initialSteps, initialIngredients }) => {
   let maxImgWarning = `A maximum of ${maxImages} images are allowed at once`;
 
   const handleAddStep = () => {
-    setRecipie({
-      ...recipie,
-      steps: [...recipie.steps, { text: "", edit: true }],
+    setrecipe({
+      ...recipe,
+      steps: [...recipe.steps, { text: "", edit: true }],
     });
   };
   const handleAddIngredient = () => {
-    setRecipie({
-      ...recipie,
+    setrecipe({
+      ...recipe,
       ingredients: [
-        ...recipie.ingredients,
+        ...recipe.ingredients,
         { name: "", amount: 1, measurement: "", edit: true },
       ],
     });
   };
   const handleDeleteStep = (i) => {
-    let filteredSteps = [...recipie.steps];
+    let filteredSteps = [...recipe.steps];
     filteredSteps = filteredSteps
       .slice(0, i)
       .concat(filteredSteps.slice(i + 1, filteredSteps.length));
-    setRecipie({ ...recipie, steps: filteredSteps });
+    setrecipe({ ...recipe, steps: filteredSteps });
   };
 
   const handleDeleteIngredient = (i) => {
-    let filteredIngredients = [...recipie.ingredients];
+    let filteredIngredients = [...recipe.ingredients];
     filteredIngredients = filteredIngredients
       .slice(0, i)
       .concat(filteredIngredients.slice(i + 1, filteredIngredients.length));
-    setRecipie({ ...recipie, ingredients: filteredIngredients });
+    setrecipe({ ...recipe, ingredients: filteredIngredients });
   };
 
   const toggleEditIngredient = (i) => {
-    let editIngredients = [...recipie.ingredients];
+    let editIngredients = [...recipe.ingredients];
     let ingredient = editIngredients[i];
     if (!("edit" in ingredient)) ingredient.name = "";
     ingredient.edit = !ingredient.edit;
-    setRecipie({ ...recipie, ingredients: editIngredients });
+    setrecipe({ ...recipe, ingredients: editIngredients });
   };
 
   const toggleEditStep = (i) => {
-    let editSteps = [...recipie.steps];
+    let editSteps = [...recipe.steps];
     let step = editSteps[i];
     if (!("edit" in step)) step.text = "";
     step.edit = !step.edit;
-    setRecipie({ ...recipie, steps: editSteps });
+    setrecipe({ ...recipe, steps: editSteps });
   };
 
   const handleStepTextChange = (event, i) => {
     let text = event.target.value;
-    let stepsList = [...recipie.steps];
+    let stepsList = [...recipe.steps];
     let step = stepsList[i];
     step.text = text;
-    setRecipie({ ...recipie, steps: stepsList });
+    setrecipe({ ...recipe, steps: stepsList });
   };
 
   const handleNameChange = (event) => {
     let data = event.target.value;
-    setRecipie({ ...recipie, name: data });
+    setrecipe({ ...recipe, name: data });
   };
   const handleSummaryChange = (event) => {
     let data = event.target.value;
-    setRecipie({ ...recipie, summary: data });
+    setrecipe({ ...recipe, summary: data });
   };
   const handleServingsChange = (event) => {
     let data = event.target.value;
-    setRecipie({ ...recipie, servings: data });
+    setrecipe({ ...recipe, servings: data });
   };
   const handlePrepTimeChange = (event) => {
     let data = event.target.value;
-    setRecipie({ ...recipie, prepTime: data });
+    setrecipe({ ...recipe, prepTime: data });
   };
   const handleCookTimeChange = (event) => {
     let data = event.target.value;
-    setRecipie({ ...recipie, cookTime: data });
+    setrecipe({ ...recipe, cookTime: data });
   };
 
   const handleIngredientNameChange = (event, i) => {
-    let updatedIngredients = [...recipie.ingredients];
+    let updatedIngredients = [...recipe.ingredients];
     let ingredient = updatedIngredients[i];
     let data = event.target.value;
     ingredient.name = data;
-    setRecipie({ ...recipie, ingredients: [...updatedIngredients] });
+    setrecipe({ ...recipe, ingredients: [...updatedIngredients] });
   };
 
   const handleMeasurementChange = (event, i) => {
-    let updatedIngredients = [...recipie.ingredients];
+    let updatedIngredients = [...recipe.ingredients];
     let ingredient = updatedIngredients[i];
     let data = event.target.value;
     ingredient.measurement = data;
-    setRecipie({ ...recipie, ingredients: [...updatedIngredients] });
+    setrecipe({ ...recipe, ingredients: [...updatedIngredients] });
   };
   
   const handleAmountChange = (event, i) => {
-    let updatedIngredients = [...recipie.ingredients];
+    let updatedIngredients = [...recipe.ingredients];
     let ingredient = updatedIngredients[i];
     let data = event.target.value;
     ingredient.amount = data;
-    setRecipie({ ...recipie, ingredients: [...updatedIngredients] });
+    setrecipe({ ...recipe, ingredients: [...updatedIngredients] });
   };
 
   const handleOnImagesChange = (event) => {
@@ -140,26 +140,26 @@ const AddRecipiePage = ({ initialSteps, initialIngredients }) => {
     setFormData(imgData);
   };
 
-  const handleSaveRecipie = () => {
+  const handleSaverecipe = () => {
     let config = {
       headers: {
         "content-type": "multipart/form-data",
       },
     };
-    formData.append("recipie", JSON.stringify(recipie));
-    formData.append("event", 'UPLOAD_RECIPIE');
+    formData.append("recipe", JSON.stringify(recipe));
+    formData.append("event", 'UPLOAD_recipe');
     setFormData(formData);
     axios
-      .post("/api/recipie", formData, config)
+      .post("/api/recipe", formData, config)
       .then((resp) => console.log("RESPOSNE", resp));
   };
 
   return (
-    <main className="add-recipie-page bg-lg">
-      <div className="add-recipie-header">
-        <h3>Add Recipie</h3>
+    <main className="add-recipe-page bg-lg">
+      <div className="add-recipe-header">
+        <h3>Add recipe</h3>
       </div>
-      <form className="form add-recipie-body bg-w" encType="mulipart/form-data">
+      <form className="form add-recipe-body bg-w" encType="mulipart/form-data">
         <PrimaryInfo
           handleNameChange={handleNameChange}
           handleSummaryChange={handleSummaryChange}
@@ -169,7 +169,7 @@ const AddRecipiePage = ({ initialSteps, initialIngredients }) => {
         />
 
         <Ingredients
-          ingredients={recipie.ingredients}
+          ingredients={recipe.ingredients}
           handleAddIngredient={handleAddIngredient}
           handleDeleteIngredient={handleDeleteIngredient}
           toggleEditIngredient={toggleEditIngredient}
@@ -179,7 +179,7 @@ const AddRecipiePage = ({ initialSteps, initialIngredients }) => {
         />
 
         <PreparationSteps
-          steps={recipie.steps}
+          steps={recipe.steps}
           handleAddStep={handleAddStep}
           handleDeleteStep={handleDeleteStep}
           handleStepTextChange={handleStepTextChange}
@@ -193,14 +193,14 @@ const AddRecipiePage = ({ initialSteps, initialIngredients }) => {
 
         <button
           type="button"
-          onClick={() => handleSaveRecipie()}
+          onClick={() => handleSaverecipe()}
           tabIndex="15"
           className="btn btn-success btn-block"
         >
-          <FontAwesomeIcon icon={faSave} /> Save Recipie
+          <FontAwesomeIcon icon={faSave} /> Save recipe
         </button>
       </form>
-      <pre>{JSON.stringify(recipie, null, 2)}</pre>
+      <pre>{JSON.stringify(recipe, null, 2)}</pre>
       <Toast
         onClose={() => setShowToast(false)}
         show={showToast}
@@ -216,4 +216,4 @@ const AddRecipiePage = ({ initialSteps, initialIngredients }) => {
   );
 };
 
-export default AddRecipiePage;
+export default AddrecipePage;

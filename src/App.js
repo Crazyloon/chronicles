@@ -13,7 +13,7 @@ import { HorizontalBorder } from './components/border/border';
 
 import Cooking from './pages/cooking';
 import Dish from './pages/dish';
-import AddRecipiePage from './components/forms/protected/add-recipie-form/AddRecipie';
+import AddrecipePage from './components/forms/protected/add-recipe-form/AddRecipe';
 
 const history = createBrowserHistory();
 
@@ -45,8 +45,8 @@ function App() {
           <Route exact path="/cooking" component={Cooking} />
           <Route exact path="/travel" component={HomePage} />
           <Route exact path="/fitness" component={HomePage} />
-          <Route exact path="/recipies/new" component={AddRecipiePage} />
-          <Route exact path="/recipies/:dish" component={Dish} />
+          <Route exact path="/recipes/new" component={AddrecipePage} />
+          <Route exact path="/recipes/:dish" component={Dish} />
           <Route exact component={NotFoundPage} />
         </Switch>
       </Router>

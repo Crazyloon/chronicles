@@ -4,7 +4,7 @@
     "header": "string / max (28 characters)",
     "body": "string / max (256 characters)"
   },
-  "recipie": {
+  "recipe": {
     "ingredients": [
       {
         "ingredient": "name",

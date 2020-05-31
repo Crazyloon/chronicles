@@ -1,6 +1,6 @@
 import React from "react";
-import RecipieHero from "../components/recipie-hero/recipie-hero";
-import { shrimpRecipie } from "../models/garlicshrimp-meal";
+import recipeHero from "../components/recipe-hero/recipe-hero";
+import { shrimprecipe } from "../models/garlicshrimp-meal";
 import ThumbNailGallery from "../components/thumbnail/thumbnail-gallery";
 
 const Dish = ({
@@ -17,23 +17,23 @@ const Dish = ({
   gallery,
   time,
 }) => {
-  // get the recipie by it's id:
+  // get the recipe by it's id:
   id = "garlic-shrimp";
-  name = shrimpRecipie.name;
-  summary = shrimpRecipie.summary;
-  ingredients = shrimpRecipie.ingredients;
-  tools = shrimpRecipie.tools;
-  tags = shrimpRecipie.tags;
-  steps = shrimpRecipie.steps;
-  raiting = shrimpRecipie.raiting;
-  servings = shrimpRecipie.servings;
-  hero = shrimpRecipie.hero;
-  gallery = shrimpRecipie.gallery;
-  time = shrimpRecipie.time;
+  name = shrimprecipe.name;
+  summary = shrimprecipe.summary;
+  ingredients = shrimprecipe.ingredients;
+  tools = shrimprecipe.tools;
+  tags = shrimprecipe.tags;
+  steps = shrimprecipe.steps;
+  raiting = shrimprecipe.raiting;
+  servings = shrimprecipe.servings;
+  hero = shrimprecipe.hero;
+  gallery = shrimprecipe.gallery;
+  time = shrimprecipe.time;
 
   return (
     <section className='dish-page col-sm-8 offset-sm-2 bg-lg'>
-      <RecipieHero hero={hero} name={name} time={time} raiting={raiting} servings={servings}/>
+      <recipeHero hero={hero} name={name} time={time} raiting={raiting} servings={servings}/>
       
       <div className='dish-body bg-w'>
         <ThumbNailGallery thumbnails={gallery} />

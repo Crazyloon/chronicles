@@ -1,11 +1,11 @@
 @import '../../styles/variables.scss';
 
-.recipieHeroWrapper{
+.recipeHeroWrapper{
   float: none;
   text-align: center;
   transform: translate(0, -125px);
 }
-.recipieHero{
+.recipeHero{
   height: 320px;
   display:flex;
   flex-direction: column;
@@ -16,7 +16,7 @@
   border-top-right-radius: 4px;
 }
 
-.recipieImg{
+.recipeImg{
   align-self: center;
   z-index: 1;
   max-width: 250px;

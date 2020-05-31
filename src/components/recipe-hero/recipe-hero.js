@@ -1,11 +1,11 @@
 import React from 'react';
-import styles from './recipie-hero.module.scss';
+import styles from './recipe-hero.module.scss';
 
-const RecipieHero = ({hero, time, raiting, servings, name}) => {
+const recipeHero = ({hero, time, raiting, servings, name}) => {
   return (
-    <div className={styles.recipieHero}>
-      <div className={styles.recipieHeroWrapper}>
-        <img className={styles.recipieImg} src={hero.src} alt={hero.alt || 'recipie image'} />
+    <div className={styles.recipeHero}>
+      <div className={styles.recipeHeroWrapper}>
+        <img className={styles.recipeImg} src={hero.src} alt={hero.alt || 'recipe image'} />
         <h3>{name}</h3>
         <div>★★★★★</div>
         <div className={styles.time}>
@@ -19,4 +19,4 @@ const RecipieHero = ({hero, time, raiting, servings, name}) => {
   );
 }
  
-export default RecipieHero;
+export default recipeHero;

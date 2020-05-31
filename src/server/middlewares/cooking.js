@@ -8,7 +8,7 @@ const storage = multer.diskStorage({
     }
 
     const event = req.body.event;
-    if(event === 'UPLOAD_RECIPIE'){
+    if(event === 'UPLOAD_recipe'){
       callback(null, path.join(__dirname, 'client/src/images/cooking'));
     } else {
       callback([400, "INVALID_UPLOAD"]);
@@ -23,16 +23,16 @@ const storage = multer.diskStorage({
 });
 let upload = multer({storage: storage });
 
-// setup the fileds for uploading a recipie
-let recipieUploadConfig = upload.fields([{ name: 'images', maxCount: 6 }, { name: 'recipie', maxCount: 1 }])
+// setup the fileds for uploading a recipe
+let recipeUploadConfig = upload.fields([{ name: 'images', maxCount: 6 }, { name: 'recipe', maxCount: 1 }])
 
 export const cookingMiddlewares = (app, ) => {
-  // takes recipie and images and returns the recipie and img src
-  app.post('/api/recipie', recipieUploadConfig, (req, res, next) => {
-    let recipie = JSON.parse(req.body.recipie);
+  // takes recipe and images and returns the recipe and img src
+  app.post('/api/recipe', recipeUploadConfig, (req, res, next) => {
+    let recipe = JSON.parse(req.body.recipe);
     let images = req.files.images;
 
-    recipie.images = [...images.map(img => img.path)];
-    res.json(recipie);
+    recipe.images = [...images.map(img => img.path)];
+    res.json(recipe);
   });
 }

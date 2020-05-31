@@ -21,7 +21,7 @@ const Cooking = () => {
             Chicken stir-fry is one of my boyfriend's favorite meals to cook.
             Secretly I think that's just because it's really easy 
           </Card.Text>
-          <Button variant="blue">Get the Recipie</Button>
+          <Button variant="blue">Get the recipe</Button>
         </Card.Body>
       </Card>
       <Card>

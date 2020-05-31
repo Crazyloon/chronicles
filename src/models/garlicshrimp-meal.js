@@ -1,7 +1,7 @@
 import garlicShrimp from '../images/cooking/garlic_shrimp.jpg';
 import garlicShrimpThumb from '../images/cooking/garlic_butter_shrimp.jpg';
 
-export const shrimpRecipie = {
+export const shrimprecipe = {
   "cardData": {
     "mainImg": "../",
     "header": "string / max (28 characters)",
